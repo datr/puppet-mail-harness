@@ -133,7 +133,7 @@ class webmail {
     owner => "root",
     group => "www-data",
     mode => 640,
-    source => "/vagrant/files/etc/roundcube/apache.conf",
+    source => "puppet://${server}/modules/webmail/etc/roundcube/apache.conf",
     require => Package['roundcube'],
     notify => Service['apache2'],
   }
