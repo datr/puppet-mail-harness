@@ -67,7 +67,7 @@ class webmail {
     group => "root",
     mode => 644,
     source => "puppet://${server}/modules/webmail/etc/dovecot/conf.d/10-mail.conf",
-    notify => Service["dovecot"],
+    subscribe => Service["dovecot"],
   }
 
   # Enable logging
@@ -76,7 +76,7 @@ class webmail {
     group => "root",
     mode => 644,
     source => "puppet://${server}/modules/webmail/etc/dovecot/conf.d/10-logging.conf",
-    notify => Service["dovecot"],
+    subscribe => Service["dovecot"],
   }
 
   # Set up a simple static username and password for authentication.
@@ -85,7 +85,7 @@ class webmail {
     group => "root",
     mode => 644,
     source => "puppet://${server}/modules/webmail/etc/dovecot/conf.d/10-auth.conf",
-    notify => Service["dovecot"],
+    subscribe => Service["dovecot"],
   }
 
   file { "/etc/dovecot/conf.d/auth-static.conf.ext" :
@@ -93,7 +93,7 @@ class webmail {
     group => "root",
     mode => 644,
     source => "puppet://${server}/modules/webmail/etc/dovecot/conf.d/auth-static.conf.ext",
-    notify => Service["dovecot"],
+    subscribe => Service["dovecot"],
   }
 
   # Now lets set up a web-based imap client.
